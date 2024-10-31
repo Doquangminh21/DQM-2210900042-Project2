@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DoQuangMinh_2210900042_Project2.Models.KHACH_HANG>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Khách hàng</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tai_khoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mat_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ho_ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dia_chi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trang_thai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tai_khoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mat_khau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ho_ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dia_chi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trang_thai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Ma_KH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Ma_KH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Ma_KH })
+        </td>
+    </tr>
+}
+
+</table>

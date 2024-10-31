@@ -1,0 +1,50 @@
+﻿@model DoQuangMinh_2210900042_Project2.Models.PHIEU_GIAM_GIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PHIEU_GIAM_GIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_GG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_GG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_tien_giam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_tien_giam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngay_het_han)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay_het_han)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trang_thai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trang_thai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_PGG }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

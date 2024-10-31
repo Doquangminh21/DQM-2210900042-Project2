@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+        <a class="navbar-brand" href="#">Shop</a>
+        <div class="col-8">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Index">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/QUAN_TRI/Index">Quản trị</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KHACH_HANG/Index">Khách hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/SAN_PHAM/Index">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/PHIEU_GIAM_GIA/Index">Phiếu giảm giá</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/DON_HANG/Index">Đơn hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/CHI_TIET_DON_HANG/Index">Chi tiết đơn hàng</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

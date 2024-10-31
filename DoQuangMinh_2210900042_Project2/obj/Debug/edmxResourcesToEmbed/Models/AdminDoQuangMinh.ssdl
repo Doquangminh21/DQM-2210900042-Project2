@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoQuangMinh_2210900042_prj2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHI_TIET_DON_HANG">
+    <Key>
+      <PropertyRef Name="Ma_CTDH" />
+    </Key>
+    <Property Name="Ma_CTDH" Type="int" Nullable="false" />
+    <Property Name="Ma_DH" Type="int" />
+    <Property Name="Ma_SP" Type="int" />
+    <Property Name="So_luong" Type="int" Nullable="false" />
+    <Property Name="Gia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DON_HANG">
+    <Key>
+      <PropertyRef Name="Ma_DH" />
+    </Key>
+    <Property Name="Ma_DH" Type="int" Nullable="false" />
+    <Property Name="Ma_KH" Type="int" />
+    <Property Name="Ma_PGG" Type="int" />
+    <Property Name="Ngay_dat" Type="date" />
+    <Property Name="Tong_gia" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Trang_thai" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="KHACH_HANG">
+    <Key>
+      <PropertyRef Name="Ma_KH" />
+    </Key>
+    <Property Name="Ma_KH" Type="int" Nullable="false" />
+    <Property Name="Tai_khoan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mat_khau" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ho_ten" Type="nvarchar" MaxLength="100" />
+    <Property Name="Dia_chi" Type="nvarchar" MaxLength="255" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+    <Property Name="Trang_thai" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="PHIEU_GIAM_GIA">
+    <Key>
+      <PropertyRef Name="Ma_PGG" />
+    </Key>
+    <Property Name="Ma_PGG" Type="int" Nullable="false" />
+    <Property Name="Ma_GG" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="So_tien_giam" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ngay_het_han" Type="date" />
+    <Property Name="Trang_thai" Type="bit" />
+  </EntityType>
+  <EntityType Name="QUAN_TRI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Tai_khoan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mat_lhau" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Trang_thai" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="SAN_PHAM">
+    <Key>
+      <PropertyRef Name="Ma_SP" />
+    </Key>
+    <Property Name="Ma_SP" Type="int" Nullable="false" />
+    <Property Name="Ten_SP" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Kich_thuoc" Type="nvarchar" MaxLength="10" />
+    <Property Name="Mau" Type="nvarchar" MaxLength="20" />
+    <Property Name="Gia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Soluongtonkho" Type="int" />
+  </EntityType>
+  <Association Name="FK__CHI_TIET___Ma_DH__59063A47">
+    <End Role="DON_HANG" Type="Self.DON_HANG" Multiplicity="0..1" />
+    <End Role="CHI_TIET_DON_HANG" Type="Self.CHI_TIET_DON_HANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DON_HANG">
+        <PropertyRef Name="Ma_DH" />
+      </Principal>
+      <Dependent Role="CHI_TIET_DON_HANG">
+        <PropertyRef Name="Ma_DH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHI_TIET___Ma_SP__59FA5E80">
+    <End Role="SAN_PHAM" Type="Self.SAN_PHAM" Multiplicity="0..1" />
+    <End Role="CHI_TIET_DON_HANG" Type="Self.CHI_TIET_DON_HANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAN_PHAM">
+        <PropertyRef Name="Ma_SP" />
+      </Principal>
+      <Dependent Role="CHI_TIET_DON_HANG">
+        <PropertyRef Name="Ma_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DON_HANG__Ma_KH__5535A963">
+    <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1" />
+    <End Role="DON_HANG" Type="Self.DON_HANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH_HANG">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="DON_HANG">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DON_HANG__Ma_PGG__5629CD9C">
+    <End Role="PHIEU_GIAM_GIA" Type="Self.PHIEU_GIAM_GIA" Multiplicity="0..1" />
+    <End Role="DON_HANG" Type="Self.DON_HANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEU_GIAM_GIA">
+        <PropertyRef Name="Ma_PGG" />
+      </Principal>
+      <Dependent Role="DON_HANG">
+        <PropertyRef Name="Ma_PGG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DoQuangMinh_2210900042_prj2ModelStoreContainer">
+    <EntitySet Name="CHI_TIET_DON_HANG" EntityType="Self.CHI_TIET_DON_HANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DON_HANG" EntityType="Self.DON_HANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEU_GIAM_GIA" EntityType="Self.PHIEU_GIAM_GIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAN_PHAM" EntityType="Self.SAN_PHAM" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CHI_TIET___Ma_DH__59063A47" Association="Self.FK__CHI_TIET___Ma_DH__59063A47">
+      <End Role="DON_HANG" EntitySet="DON_HANG" />
+      <End Role="CHI_TIET_DON_HANG" EntitySet="CHI_TIET_DON_HANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHI_TIET___Ma_SP__59FA5E80" Association="Self.FK__CHI_TIET___Ma_SP__59FA5E80">
+      <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
+      <End Role="CHI_TIET_DON_HANG" EntitySet="CHI_TIET_DON_HANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DON_HANG__Ma_KH__5535A963" Association="Self.FK__DON_HANG__Ma_KH__5535A963">
+      <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+      <End Role="DON_HANG" EntitySet="DON_HANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DON_HANG__Ma_PGG__5629CD9C" Association="Self.FK__DON_HANG__Ma_PGG__5629CD9C">
+      <End Role="PHIEU_GIAM_GIA" EntitySet="PHIEU_GIAM_GIA" />
+      <End Role="DON_HANG" EntitySet="DON_HANG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

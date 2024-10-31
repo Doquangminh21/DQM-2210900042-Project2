@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DoQuangMinh_2210900042_Project2.Models.CHI_TIET_DON_HANG>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.So_luong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DON_HANG.Ma_DH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SAN_PHAM.Ten_SP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.So_luong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DON_HANG.Ma_DH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SAN_PHAM.Ten_SP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Ma_CTDH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Ma_CTDH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Ma_CTDH })
+        </td>
+    </tr>
+}
+
+</table>
